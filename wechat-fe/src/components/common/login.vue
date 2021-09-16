@@ -13,9 +13,19 @@ export default {
             }
         },
 	methods: {
-		login() {
-			http.get("/api/test").then((response) => {
+		ready() {
+			http.get("/wechat/ready").then((response) => {
 				console.log(response);
+			})
+		},
+		login() {
+			let params = {
+				nickName: 	this.input,
+				loginTime: 	new Date().getTime().toString()
+			}
+			console.log(params)
+			http.post("/wechat/login", params).then((res) => {
+				console.log(res)
 			})
 		}
 	},
