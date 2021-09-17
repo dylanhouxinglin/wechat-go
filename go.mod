@@ -8,4 +8,5 @@ require (
 	github.com/lestrrat/go-strftime v0.0.0-20180220042222-ba3bf9c1d042 // indirect
 	github.com/siddontang/go v0.0.0-20180604090527-bdc77568d726 // indirect
 	github.com/spf13/viper v1.8.1
+	go.mongodb.org/mongo-driver v1.7.2
 )

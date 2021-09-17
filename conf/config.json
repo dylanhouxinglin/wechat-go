@@ -3,5 +3,11 @@
     "address": ":8989",
     "readTimeout": 10,
     "writeTimeout": 10
+  },
+  "db": {
+    "uri": "mongodb://localhost:27017",
+    "database": "admin",
+    "maxPoolSize": 5,
+    "timeout": 5
   }
 }
