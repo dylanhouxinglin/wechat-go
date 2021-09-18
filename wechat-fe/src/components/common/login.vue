@@ -20,8 +20,10 @@ export default {
 		},
 		login() {
 			let params = {
-				nickName: 	this.input,
-				loginTime: 	new Date().getTime().toString()
+				user: {
+					nickname: 	this.input,
+					loginTime: 	new Date().getTime().toString()
+				}
 			}
 			console.log(params)
 			http.post("/wechat/login", params).then((res) => {

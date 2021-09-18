@@ -42,11 +42,11 @@ func initDB() {
 		panic(err)
 	}
 	database = &db.MongoDB{}
-	database.DB = client.Database(viper.GetString(`db.database`))
+	database.Mongo = client.Database(viper.GetString(`db.database`))
 }
 
 func GetDBIns() (*db.MongoDB, error) {
-	if database == nil && database.DB == nil {
+	if database == nil && database.Mongo == nil {
 		return nil, errors.New("Get DB Ins Error")
 	}
 	return database, nil

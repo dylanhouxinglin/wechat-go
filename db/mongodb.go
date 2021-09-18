@@ -1,7 +1,9 @@
 package db
 
-import "go.mongodb.org/mongo-driver/mongo"
+import (
+	"go.mongodb.org/mongo-driver/mongo"
+)
 
 type MongoDB struct {
-	DB		*mongo.Database
+	Mongo		*mongo.Database
 }

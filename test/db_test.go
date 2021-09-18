@@ -3,6 +3,7 @@ package test
 import (
 	"context"
 	"fmt"
+	"github.com/siddontang/go/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"testing"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -52,8 +53,9 @@ func TestMongoDBPool(t *testing.T)  {
 	//return db
 }
 
+// 变量名首字母需要大写，否则无法入库
 type stu struct {
-	name	string
+	Name	string
 }
 
 func TestDBInit(t *testing.T)  {
@@ -63,13 +65,21 @@ func TestDBInit(t *testing.T)  {
 		t.Log(err)
 		return
 	}
-	t.Log(db.DB.Name())
-	collection := db.DB.Collection("testColl")
-	s := stu{"hxl"}
+	t.Log(db.Mongo.Name())
+	collection := db.Mongo.Collection("testColl")
+	s := stu{"dylan"}
 	res, err := collection.InsertOne(context.TODO(), s)
 	if err != nil {
 		t.Log(err)
 		return
 	}
 	t.Log(res)
+	filter := bson.M{"name":"dylan"}
+	var s_res stu
+	err = collection.FindOne(context.TODO(), filter).Decode(&s_res)
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	t.Log(s_res)
 }
